@@ -10,15 +10,15 @@ tags: [simulation]
 This script computes the energy/force/power requirments for the ascent of a electrically-driven bike using a hub motor. Because the efficiency depends strongly on the rotational speed, low speed in ascent is not necessarily associated with a good energy management. The objective of the notebook is to estimate the opimal speed minimizing the overall energy use.
 
 The model used here accounts for three energy sinks:
-* The gravity force: $F_g=mg\sin\theta$, where $\theta$ is the inclination angle of the road, $m$ the mass of the rolling assembly and $g$ is the gravitational acceleration, assumed at 9.81 $ms^{-2}$
-* The air friction force, assuming a turbulent regime: $F_f=\dfrac{1}{2}C_xA\rho v^2$. $C_x$ is the friction coeeficient associated to the shape, $A$ if the projected area normal to the velocity vector and $v$ is the velocity.
-* The Joule dissipation in the wiring, transformed in an equivalent force: $F_e = \dfrac{1}{v}(\dfrac{P_{el,motor}}{U_{batt}})^2 R$. $P_{el,motor}$ designates the electric power consumed by the motor and $U_{batt}$ the voltage of the battery, and $R$ is the overall resistance of the electric circuit, which should include the internal resistance of the batteries.
+* The gravity force: $$F_g=mg\sin\theta$$, where $$\theta$$ is the inclination angle of the road, $$m$$ the mass of the rolling assembly and $$g$$ is the gravitational acceleration, assumed at 9.81 $$ms^{-2}$$
+* The air friction force, assuming a turbulent regime: $$F_f=\dfrac{1}{2}C_xA\rho v^2$$. $$C_x$$ is the friction coeeficient associated to the shape, $$A$$ if the projected area normal to the velocity vector and $$v$$ is the velocity.
+* The Joule dissipation in the wiring, transformed in an equivalent force: $$F_e = \dfrac{1}{v}(\dfrac{P_{el,motor}}{U_{batt}})^2 R$$. $$P_{el,motor}$$ designates the electric power consumed by the motor and $$U_{batt}$$ the voltage of the battery, and $$R$$ is the overall resistance of the electric circuit, which should include the internal resistance of the batteries.
 
-To get the energy needed, one would divide $F_g$ and $F_f$ by the efficiency $\eta(v)$ and add $F_e$ to it, and then integrate spatially over the route. Obsiously, reducing the energy by the distance leads back to the concept of force, as energy per unit distance.
+To get the energy needed, one would divide $$F_g$$ and $$F_f$$ by the efficiency $$\eta(v)$$ and add $$F_e$$ to it, and then integrate spatially over the route. Obsiously, reducing the energy by the distance leads back to the concept of force, as energy per unit distance.
 
 Unless specified differently, the base case will work with the following parameters:
 * Mass in motion : 110 kg
-* Overall electrical resistance: 1 $\Omega$
+* Overall electrical resistance: 1 $$\Omega$$
 * Road inclination: 5%
 * Nominal battery voltage: 50V
 
@@ -50,7 +50,7 @@ rend = f(v)/100
 
 fig, ax = plt.subplots(figsize=(6, 4))
 plt.plot(v,rend,'k')
-plt.ylabel('$\eta$')
+plt.ylabel('$$\eta$$')
 plt.xlabel('Speed (km/h)')
 ax.grid(True)
 plt.show()
@@ -64,15 +64,15 @@ plt.show()
 
 We are now ready to compute the energy needed per unit distance in different conditions. Because we want to remain general, a meaningful way to express the energy demand is to normalize the energy by the theoretical minimum energy necessary to progress on the slope. This energy is the potential energy from the difference of height, which would be reached by an ideal system without any form of losses: 100%-efficient motor, no electrical resistance, no air friction.
 
-$\text{Normalized energy} = \dfrac{\text{Actual energy}}{\text{Potential energy}} = \dfrac{E}{mg\Delta h}$
+$$\text{Normalized energy} = \dfrac{\text{Actual energy}}{\text{Potential energy}} = \dfrac{E}{mg\Delta h}$$
 
 The obtained energy will therefore tell of much many time more energy will would need for the bike, 1 being the ideal condition. Bear in mind that this normalization has a disadvantage, since it is not valid for flat road, since no theoretical energy is required to go along a flat path. In that case, the most economic speed is no speed at all!
 
 ### Influence of air friction
 
-In the expression of the air friction force, the product $C_x A$ bears a large uncertainty, since it is difficult to estimate for a complex shape such as a bike. Therefore, we can assume a conservative estimate and then vary its value to adress its influence on the result. 
+In the expression of the air friction force, the product $$C_x A$$ bears a large uncertainty, since it is difficult to estimate for a complex shape such as a bike. Therefore, we can assume a conservative estimate and then vary its value to adress its influence on the result. 
 
-The following bloc of code computes the normalized energy as a function of speed for three cases: a medium friction case estimating $C_x= 0.5$ and $A=1$ $\text{m}^2$. A inclination of 5% is arbistrarily chosen for the road.
+The following bloc of code computes the normalized energy as a function of speed for three cases: a medium friction case estimating $$C_x= 0.5$$ and $$A=1$$ $$\text{m}^2$$. A inclination of 5% is arbistrarily chosen for the road.
 
 
 ```python
@@ -160,7 +160,7 @@ plt.show()
 Interestingly enough, a strong slope encourages a higher speed, as the aerodynamic force is increasingly dominated by the gravitational force, magnifying the relative importance of the motor efficiency. Therefore, the steeper the road, the faster one should drive in order to minimize the energy demand. This can be very surprising at first sight, but makes sense in the end.
 
 ### Influence of overall electric resistance
-Another parameter bearing a large uncertainty is the overall circuit resistance used to compute the Joule losses due to the current flowing across the system. In first assumption, a resistance of 1$\Omega$ was chosen. Here, this value is varied by a factor 10 in both direction to grasp its influence on the optimal speed.  
+Another parameter bearing a large uncertainty is the overall circuit resistance used to compute the Joule losses due to the current flowing across the system. In first assumption, a resistance of 1$$\Omega$$ was chosen. Here, this value is varied by a factor 10 in both direction to grasp its influence on the optimal speed.  
 
 
 ```python
@@ -173,11 +173,11 @@ minED2 = np.argmin(Ed2)
 minED3 = np.argmin(Ed3)
 
 fig, ax = plt.subplots(figsize=(6, 4))
-plt.plot(v,Ed1,label='R=0.1 $\Omega$')
+plt.plot(v,Ed1,label='R=0.1 $$\Omega$$')
 plt.plot(v[minED1],Ed1[minED1],'bo')
-plt.plot(v,Ed2,label='R=1 $\Omega$')
+plt.plot(v,Ed2,label='R=1 $$\Omega$$')
 plt.plot(v[minED2],Ed2[minED2],'ro')
-plt.plot(v,Ed3,label='R=10 $\Omega$')
+plt.plot(v,Ed3,label='R=10 $$\Omega$$')
 plt.plot(v[minED3],Ed3[minED3],'go')
 plt.ylim(0,8)
 plt.ylabel('Normalized energy')
@@ -192,7 +192,7 @@ plt.show()
 ![png](/assets/images/output_9_0.png)
 
 
-There is a negligible difference between 0.1 and the nominal case 1$\Omega$, with the same optimal speed as before, in the vicinity of 20 km/h. Howver, a resistance of 10$\Omega$ reduces significantly the optimal speed, since a lower speed will slightly reduce the electric current flowing in the circuit. 
+There is a negligible difference between 0.1 and the nominal case 1$$\Omega$$, with the same optimal speed as before, in the vicinity of 20 km/h. Howver, a resistance of 10$$\Omega$$ reduces significantly the optimal speed, since a lower speed will slightly reduce the electric current flowing in the circuit. 
 
 ## Conclusion
 The main point of this short study is to show that when it comes to going uphill with a hub motor, one should go at a relatively large speed in order to minimize the overall energy consumption. One should not go slowly thinking it will be energetically advantageous. Because the gear ratio between the wheel and the motor is fixed, the motor efficiency will be significantly affected at low speed and will increase the overall energy need. At higher speed however, the total energy needed is comparatively reduced, although the electric power drawn from the battery will be higher. For the simplified model considered here, a speed between 17 and 20 km/h seems to be a reasonable speed when trying to minimize the energy needs. Very aerodynamic bikes might even benefit from larger speeds.
