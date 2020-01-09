@@ -40,7 +40,7 @@ FairCoeff = 0.5*(1 *1.2) #Coefficient of friction for turbulent regime
 ```
 
 ## Motor efficiency as a function of speed
-The data recovered from the online motor simulation tool is recovered and displayed here. The motor is the All-Axle Hub Motor from Grin-Tech [link](https://www.ebikes.ca/product-info/all-axle-hub-motor.html) and the data comes from their motor simulator, based on the model 9C+2707 with 48V batteries.
+The data recovered from the online motor simulation tool is recovered and displayed here. The motor is the All-Axle Hub Motor from Grin-Tech [(link)](https://www.ebikes.ca/product-info/all-axle-hub-motor.html) and the data comes from their motor simulator, based on the model 9C+2707 with 48V batteries.
 
 
 ```python
