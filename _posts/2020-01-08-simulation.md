@@ -84,7 +84,7 @@ FairCoeff = 1.5*(0.5 *1.2)
 
 
 def SpecificEnergy(slope,m,v,rend,FairCoeff,U,R):
-    Fair = 0.8*FairCoeff*np.power(v/3.6,2)
+    Fair = 0.5*FairCoeff*np.power(v/3.6,2)
     Fg  = m*9.81*np.sin(np.arctan(slope))
     Ed = (Fair+Fg)/rend
     I = Ed * (v/3.6) /U
