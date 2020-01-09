@@ -7,7 +7,7 @@ tags: [simulation]
 ---
 
 Riding your electric bike, you suddenly face a long, steep road. What strategy to adopt in order to minimize the energy needed to climb it? Slow or fast?
-This script computes the energy/force/power requirements for the ascent of a electrically-driven bike using a hub motor. Because the efficiency depends strongly on the rotational speed, low speed in ascent is not necessarily associated with a good energy management. The objective of the notebook is to estimate the optimal speed minimizing the overall energy use, using a very simplified model. I am open to constructive comments and suggestion concerning this short study. Just contact me!
+This script computes the energy requirements for the ascent of a electrically-driven bike using a hub motor. Because the efficiency depends strongly on the rotational speed, low speed in ascent is not necessarily associated with a good energy management. The objective of the notebook is to estimate the optimal speed minimizing the overall energy use, using a very simplified model. The work was originally done in a Jupyter notebook (<a href="/assets/others/OptimalSpeed.ipynb" download>available for download</a>) and the Python code is made visible above the output Figures. I am open to constructive comments and suggestions concerning this short study. Just contact me!
 
 The model used here accounts for three energy sinks:
 * The gravity force: $$F_g=mg\sin\theta$$, where $$\theta$$ is the inclination angle of the road, $$m$$ the mass of the rolling assembly and $$g$$ is the gravitational acceleration, assumed at 9.81 $$ms^{-2}$$
