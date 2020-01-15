@@ -57,7 +57,7 @@ plt.show()
 ```
 
 
-![png](output_3_0.png)
+![png](/assets/images/output_3_0.png)
 
 
 ## Energy demand computation
@@ -70,7 +70,7 @@ The obtained energy will therefore tell of much many time more energy will would
 
 ### Influence of air friction
 
-In the expression of the air friction force, the product $$C_x A$$ bears a large uncertainty, since it is difficult to estimate for a complex shape such as a bike. Therefore, we can assume a conservative estimate and then vary its value to adress its influence on the result.
+In the expression of the air friction force, the product $$C_x A$$ bears a large uncertainty, since it is difficult to estimate for a complex shape such as a bike. Therefore, we can assume a conservative estimate and then vary its value to address its influence on the result.
 
 The following bloc of code computes the normalized energy as a function of speed for three cases: a medium friction case estimating $$C_x= 1.5$$ and $$A=0.5$$ $$\text{m}^2$$. A inclination of 5% is arbitrarily chosen for the road.
 
@@ -119,7 +119,7 @@ plt.show()
 ```
 
 
-![png](output_5_0.png)
+![png](/assets/images/output_5_0.png)
 
 
 The larger the air friction, the smaller the speed minimizing the energy, since the importance of the motor inefficiency is reduced compared to this other type of loss. With no friction, the best point is the one close to the point of maximum motor efficiency. For the medium case, a speed of approximately 20 km/h appears the most economic one. However, deviating from this exact speed is no big deal since the curvature is locally small: going at 15 or 25 km/h will barely affect the energy demand.
@@ -154,7 +154,7 @@ plt.show()
 ```
 
 
-![png](output_7_0.png)
+![png](/assets/images/output_7_0.png)
 
 
 Interestingly enough, a strong slope encourages a higher speed, as the aerodynamic force is increasingly dominated by the gravitational force, magnifying the relative importance of the motor efficiency. Therefore, the steeper the road, the faster one should drive in order to minimize the energy demand. This can be very surprising at first sight, but makes sense in the end.
@@ -189,10 +189,10 @@ plt.show()
 ```
 
 
-![png](output_9_0.png)
+![png](/assets/images/output_9_0.png)
 
 
-There is a negligible difference between 0.1 and the nominal case 1$$\Omega$$, with the same optimal speed as before, in the vicinity of 20 km/h. Howver, a resistance of 10$$\Omega$$ reduces significantly the optimal speed, since a lower speed will slightly reduce the electric current flowing in the circuit.
+There is a negligible difference between 0.1 and the nominal case 1$$\Omega$$, with the same optimal speed as before, in the vicinity of 20 km/h. However, a resistance of 10$$\Omega$$ reduces significantly the optimal speed, since a lower speed will slightly reduce the electric current flowing in the circuit.
 
 ## Conclusion
 The main point of this short study is to show that when it comes to going uphill with a hub motor, one should go at a relatively large speed in order to minimize the overall energy consumption. One should not go slowly thinking it will be energetically advantageous. Because the gear ratio between the wheel and the motor is fixed, the motor efficiency will be significantly affected at low speed and will increase the overall energy need. At higher speed however, the total energy needed is comparatively reduced, although the electric power drawn from the battery will be higher. For the simplified model considered here, a speed between 17 and 20 km/h seems to be a reasonable speed when trying to minimize the energy needs. Very aerodynamic bikes might even benefit from larger speeds.
