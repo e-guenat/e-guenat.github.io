@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Why you should go hard on steep road
+title: Why you should go hard on steep roads
 date: 2020-01-08 18:44:53
 category: Study
 tags: [simulation]
